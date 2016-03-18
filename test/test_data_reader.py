@@ -10,7 +10,7 @@ class DataReaderTest(TestCase):
     def test_should_read_data_from_file(self):
         words_str = self.reader.read()
 
-        self.assertEqual(words_str, 'test1,test2\ntest3,test4')
+        self.assertEqual(words_str, ' test1,test2\ntest3 , test4')
 
     def test_should_get_all_words(self):
         words = self.reader.get_words_list()

@@ -5,10 +5,14 @@ from whoisundercover.undercover_exception import UndercoverException
 
 
 class RoleProcessor(object):
+    INVALID_TOTAL_NUMBER = 'The number of total players can not be less than 3'
     INVALID_UNDERCOVER_NUMBER = 'The number of undercover must be less than the half of total number'
 
     def __init__(self, total_num, undercover_num):
         super(RoleProcessor, self).__init__()
+        if total_num < 3:
+            raise UndercoverException(msg=self.INVALID_TOTAL_NUMBER)
+
         if undercover_num > (total_num / 2):
             raise UndercoverException(msg=self.INVALID_UNDERCOVER_NUMBER)
 
@@ -27,6 +31,8 @@ class RoleProcessor(object):
 
     def _generate_whiteboard_and_undercover(self):
         players = range(self.total_num)
-        uc_and_wb = [players.pop(random.randint(0, len(players) - 1)) for _ in range(self.undercover_num + 1)]
 
-        return uc_and_wb.pop(-1), uc_and_wb
+        whiteboard = players.pop(random.randint(1, len(players) - 1))
+        undercovers = [players.pop(random.randint(0, len(players) - 1)) for _ in range(self.undercover_num)]
+
+        return whiteboard, undercovers
