@@ -13,6 +13,6 @@ class DataReaderTest(TestCase):
         self.assertEqual(words_str, 'test1,test2\ntest3,test4')
 
     def test_should_get_all_words(self):
-        words = self.reader.get_all_words()
+        words = self.reader.get_words_list()
 
         self.assertEqual(words, [['test1', 'test2'], ['test3', 'test4']])

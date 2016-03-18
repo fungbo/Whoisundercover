@@ -8,7 +8,7 @@ from whoisundercover.words_selector import WordsSelector
 
 class WordsSelectorTest(TestCase):
     def setUp(self):
-        self.selector = WordsSelector(DataReader('./data/words.txt').get_all_words())
+        self.selector = WordsSelector(DataReader('./data/words.txt').get_words_list())
 
     @patch('random.randint')
     def test_should_get_anyone_words(self, mock_randint):

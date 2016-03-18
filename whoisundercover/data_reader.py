@@ -9,7 +9,7 @@ class DataReader(object):
         with open(self.path) as data:
             return data.read().rstrip('\n')
 
-    def get_all_words(self):
+    def get_words_list(self):
         words_str = self.read()
         words_list = [row.split(',') for row in words_str.split('\n')]
 
