@@ -1,5 +1,3 @@
-import random
-
 from whoisundercover.data_reader import DataReader
 from whoisundercover.role_processor import RoleProcessor
 from whoisundercover.words_selector import WordsSelector
@@ -20,10 +18,11 @@ def play():
     role_list = role_processor.assign_role_to_player()
 
     words_selector = WordsSelector(DataReader('./data/words.txt').get_words_list())
-    words = words_selector.get_a_pair_of_words_by_random()
-    undercover_word_index = random.randint(0, len(words) - 1)
+    civilian_word = words_selector.get_civilian_word()
+    undercover_word = words_selector.get_undercover_word()
 
-    print role_list, words, undercover_word_index
+    print role_list, civilian_word, undercover_word
+
 
 if __name__ == '__main__':
     play()
