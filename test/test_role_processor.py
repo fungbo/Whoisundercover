@@ -1,7 +1,7 @@
 from unittest import TestCase
 
 from whoisundercover.role import CIVILIAN, UNDERCOVER, WHITEBOARD
-from whoisundercover.role_processor import RoleProcessor
+from whoisundercover.role_processor import RoleProcessor, generate_the_first_player
 from whoisundercover.role_exception import RoleException
 
 
@@ -29,3 +29,9 @@ class RoleProcessorTest(TestCase):
         self.assertEqual(role_list.count(CIVILIAN), 5)
         self.assertEqual(role_list.count(UNDERCOVER), 2)
         self.assertEqual(role_list.count(WHITEBOARD), 1)
+
+    def test_should_generate_the_first_player(self):
+        role_list = [1, 2, 1, 1, 2, 1, 3, 1]
+        the_first_player = generate_the_first_player(role_list)
+
+        self.assertNotEqual(role_list[the_first_player], 3)

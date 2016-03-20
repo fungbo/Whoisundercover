@@ -36,3 +36,10 @@ class RoleProcessor(object):
         undercovers = [players.pop(random.randint(0, len(players) - 1)) for _ in range(self.undercover_num)]
 
         return whiteboard, undercovers
+
+
+def generate_the_first_player(role_list):
+    while True:
+        index = random.randint(0, len(role_list) - 1)
+        if role_list[index] != WHITEBOARD:
+            return index
